@@ -1,19 +1,3 @@
-Skip to content
-This repository  
-Search
-Pull requests
-Issues
-Gist
- @akosipua
- Watch 76
-  Star 1,837
-  Fork 214 jsoma/tabletop
- Code  Issues 34  Pull requests 5  Pulse  Graphs
-Branch: master Find file Copy pathtabletop/src/tabletop.js
-e647120  on Nov 18, 2015
-@thenano thenano add the overall sheet name to tabletop object
-16 contributors @jsoma @zzolo @plainview @bnchdrff @thomaswilburn @ghing @futuraprime @dannguyen @laurent-le-graverend @thenano @jsvine @clkao @ctbarna @maxogden @shakhal @andymason
-RawBlameHistory     Executable File  569 lines (496 sloc)  18 KB
 (function() {
   "use strict";
 
@@ -205,6 +189,7 @@ RawBlameHistory     Executable File  569 lines (496 sloc)  18 KB
       Insert the URL into the page as a script tag. Once it's loaded the spreadsheet data
       it triggers the callback. This helps you avoid cross-domain errors
       http://code.google.com/apis/gdata/samples/spreadsheet_sample.html
+
       Let's be plain-Jane and not use jQuery or anything.
     */
     injectScript: function(path, callback) {
@@ -313,6 +298,7 @@ RawBlameHistory     Executable File  569 lines (496 sloc)  18 KB
       Need to use injectScript because the worksheet view that you're working from
       doesn't actually include the data. The list-based feed (/feeds/list/key..) does, though.
       Calls back to loadSheet in order to get the real work done.
+
       Used as a callback for the worksheet-based JSON
     */
     loadSheets: function(data) {
@@ -383,6 +369,7 @@ RawBlameHistory     Executable File  569 lines (496 sloc)  18 KB
     
     /*
       Parse a single list-based worksheet, turning it into a Tabletop Model
+
       Used as a callback for the list-based JSON
     */
     loadSheet: function(data) {
@@ -421,6 +408,7 @@ RawBlameHistory     Executable File  569 lines (496 sloc)  18 KB
   /*
     Tabletop.Model stores the attribute names and parses the worksheet data
       to turn it into something worthwhile
+
     Options should be in the format { data: XXX }, with XXX being the list-based worksheet
   */
   Tabletop.Model = function(options) {
@@ -578,5 +566,3 @@ RawBlameHistory     Executable File  569 lines (496 sloc)  18 KB
   }
 
 })();
-Status API Training Shop Blog About Pricing
-© 2016 GitHub, Inc. Terms Privacy Security Contact Help
