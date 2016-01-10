@@ -1,4 +1,4 @@
-<!--<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en-us">
   <head>
     <meta charset="UTF-8">
@@ -8,78 +8,11 @@
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
     <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+    <script src="https://code.jquery.com/jquery-1.10.1.min.js"></script>
+    <script src="https://cdn.blockspring.com/blockspring.js"></script>
   </head>
   <body>
-    <p id="food"></p>
-    <script type="text/javascript" src="tabletop.js"></script>
-    <script type="text/javascript">
-      window.onload = function() { init() };
-
-      //var public_spreadsheet_url = 'https://docs.google.com/spreadsheets/d/1Qx2c-V0Aly18Tt-SHy7TuA46_3MaxEMvoVWuAF5UeoI/pubhtml';
-      var public_spreadsheet_url = 'https://docs.google.com/spreadsheets/d/1XKEoNootdqppngBRDnfoj0qjrdfCGcprqegMaLsZs24/pub?hl=en_US&hl=en_US&output=html';
-
-      function init() {
-        Tabletop.init( { key: public_spreadsheet_url,
-                         callback: showInfo,
-                         simpleSheet: true } );
-      }
-
-      function showInfo(data) {
-        // data comes through as a simple array since simpleSheet is turned on
-        document.getElementById("food").innerHTML = "<strong>Foods:</strong> " + [ data[0].Name, data[1].Name, data[2].Name ].join(", ");
-        console.log(data);
-      }
-      </script>
-
-  
-  </body>
-</html>-->
-
-
-<!DOCTYPE html>
-<html>
-  <body>
-    <div id="table_info"></div>
-    
-    <div id="explanation"></div>
-    
-    <h2>Let's talk about cats</h2>
-    <ul id="cats"></ul>
-
-    <h2>Let's learn a thing or two</h2>
-    <ul id="courses"></ul>
-
-    <!-- Don't need jQuery for Tabletop, but using it for this example -->
-
-    <script type="text/javascript" src="tabletop.js"></script>
-    <script type="text/javascript">
-      var public_spreadsheet_url = 'https://docs.google.com/spreadsheet/pub?hl=en_US&hl=en_US&key=0AmYzu_s7QHsmdE5OcDE1SENpT1g2R2JEX2tnZ3ZIWHc&output=html';
-      $(document).ready( function() {
-        Tabletop.init( { key: public_spreadsheet_url,
-                         callback: showInfo,
-                         wanted: [ "Cats", "Courses" ],
-                         debug: true } )
-      })
-        
-      function showInfo(data, tabletop) {
-        $("#table_info").text("We found the tables " + tabletop.model_names.join(", "));
-        $.each( tabletop.sheets(), function(i, sheet) {
-          $("#table_info").append("<p>" + sheet.name + " has " + sheet.column_names.join(", ") + "</p>");
-        });
-        $.each( tabletop.sheets("Cats").all(), function(i, cat) {
-          var cat_li = $('<li><h4>' + cat.Name + '</h4></li>')
-          cat_li.append(cat.description);
-          cat_li.appendTo("#cats");
-        })
-        $.each( tabletop.sheets("Courses").all(), function(i, course) {
-          var cat_li = $('<li><h4>' + course.title + '</h4></li>')
-          cat_li.append(course.description);
-          cat_li.append("<p>Cost: $" + course.cost + "</p>");
-          cat_li.appendTo("#courses");
-        })
-        
-      }
-      document.write("The published spreadsheet is located at <a target='_new' href='" + public_spreadsheet_url + "'>" + public_spreadsheet_url + "</a>");    
-    </script>
   </body>
 </html>
+
+
